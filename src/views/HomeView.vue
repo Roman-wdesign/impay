@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ModalDialog v-show="isModalVisible" @close="closeModal">
+      <template> This is a new modal header</template>
+    </ModalDialog>
+    <button type="button" class="btn" @click="showModal">Show Modal</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import ModalDialog from "@/components/ModalDialog.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    ModalDialog,
+  },
+  data: () => ({
+    isModalVisible: false,
+  }),
+
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+  },
+};
 </script>
